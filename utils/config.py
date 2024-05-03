@@ -1,5 +1,3 @@
-import re
-
 class Config(object):
     """
     This class defines all the config parameters used in the program.
@@ -12,17 +10,9 @@ class Config(object):
 
         self.threads_count = int(config["LOCAL PROPERTIES"]["THREADCOUNT"])
         self.save_file = config["LOCAL PROPERTIES"]["SAVE"]
-        self.robot_save_file = config["LOCAL PROPERTIES"]["ROBOTSAVE"]
-        self.simhash_save_file = config["LOCAL PROPERTIES"]["SIMHASHSAVE"]
-        self.max_save_file = config["LOCAL PROPERTIES"]["MAXSAVE"]
-        self.token_save_file = config["LOCAL PROPERTIES"]["TOKENSAVE"]
-        self.skip_save_file = config["LOCAL PROPERTIES"]["SKIPSAVE"]
 
         self.seed_urls = config["CRAWLER"]["SEEDURL"].split(",")
-        self.max_file_size = int(config["CRAWLER"]["MAXFILESIZE"])
         self.time_delay = float(config["CRAWLER"]["POLITENESS"])
-        self.low_information_value = int(config["CRAWLER"]["LOWINFORMATIONVALUE"])
-        self.similarity_threshold = float(config["CRAWLER"]["SIMILARITYTHRESHOLD"])
 
         self.PLATFORMS = {
         'windows': "Windows NT 10.0; Win64; x64",

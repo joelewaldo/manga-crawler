@@ -35,3 +35,8 @@ def normalize(url):
     if url.endswith("/"):
         return url.rstrip("/")
     return url
+
+def getBaseUrl(url):
+        """Extract the base URL from the given URL."""
+        parsed = urlparse(url)
+        return f"{parsed.scheme}://{parsed.netloc}"
