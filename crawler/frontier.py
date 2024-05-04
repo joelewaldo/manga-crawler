@@ -5,7 +5,7 @@ from queue import Queue, Empty
 
 from utils import get_logger, get_urlhash, normalize
 from scraper import find
-from scraper.extractor import Extractor
+from scraper.scraper import Scraper
 
 class Frontier(object):
     """
@@ -54,8 +54,8 @@ class Frontier(object):
         for hashed_url in self.urls:
             url = self.urls[hashed_url]["url"]
             completed = self.urls[hashed_url]["completed"]
-            extractor: Extractor = find(url)
-            if not completed and extractor.is_valid(url):
+            scraper: Scraper = find(url)
+            if not completed and scraper.is_valid(url):
                 self.to_be_downloaded.put(url)
                 tbd_count += 1
         self.logger.info(f"Found {tbd_count} urls to be downloaded from {total_count} total urls discovered.")

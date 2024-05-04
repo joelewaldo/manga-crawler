@@ -3,13 +3,13 @@ import os
 from urllib.parse import urlparse
 import importlib
 
-module_directory = './scraper'
+module_directory = './extractor'
 if module_directory not in sys.path:
     sys.path.append(module_directory)
 
 module_domains = {
     "comick": "comick.io",
-    "tcb": "tcb-backup.bihar-mirchi.com"
+    "tcbextractor": "tcb-backup.bihar-mirchi.com"
 }
 
 def _list_classes():
@@ -24,18 +24,18 @@ def _list_classes():
     return class_list
 
 def find(url, config):
-    """Find a suitable scraper for the given URL by checking the domain."""
+    """Find a suitable extractor for the given URL by checking the domain."""
     parsed_url = urlparse(url)
     domain = parsed_url.netloc
     for cls in _list_classes():
         if domain == cls.domain:
-            return cls(url, config)
+            return cls(config)
     return None
 
 if __name__ == "__main__":
     url = "https://comick.io/home"
-    scraper = find(url)
-    if scraper:
-        print(f"Scraper found: {scraper}")
+    extractor = find(url)
+    if extractor:
+        print(f"Extractor found: {extractor}")
     else:
-        print("No suitable scraper found.")
+        print("No suitable extractor found.")

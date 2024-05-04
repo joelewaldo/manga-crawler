@@ -1,7 +1,10 @@
 from abc import ABC, abstractmethod
 from urllib.parse import urlparse
 
-class Extractor(ABC):
+class Scraper(ABC):
+    def __init__(self, url, config):
+        self.config = config
+        self.url = url
 
     def find_links(self, url, resp) -> list[str]:
         links = self.extract_next_links(url, resp)

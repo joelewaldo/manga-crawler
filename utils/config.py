@@ -10,6 +10,7 @@ class Config(object):
 
         self.threads_count = int(config["LOCAL PROPERTIES"]["THREADCOUNT"])
         self.save_file = config["LOCAL PROPERTIES"]["SAVE"]
+        self.manga_dir = config["LOCAL PROPERTIES"]["MANGADIR"]
 
         self.seed_urls = config["CRAWLER"]["SEEDURL"].split(",")
         self.time_delay = float(config["CRAWLER"]["POLITENESS"])

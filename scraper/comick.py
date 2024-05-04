@@ -1,13 +1,13 @@
-from scraper.extractor import Extractor
+from scraper.scraper import Scraper
 from urllib.parse import urlparse, urljoin
 from bs4 import BeautifulSoup
 import re
 
-class Comick(Extractor):
+class Comick(Scraper):
     domain = "comick.io"
 
-    def __init__(self, url):
-        self.url = url
+    def __init__(self, url, config):
+        super().__init__(url, config)
     
     def extract_next_links(self, url, resp) -> list[str]:
         soup = BeautifulSoup(resp.content, "html.parser", from_encoding="utf-8")
@@ -15,7 +15,6 @@ class Comick(Extractor):
 
         # finds all the anchor tags and href links and turns them all into absolute urls
         all_links = soup.find_all("a")
-        print(all_links)
         for link in all_links:
             href = link.get("href")
             if href:
@@ -53,4 +52,4 @@ class Comick(Extractor):
             raise
 
     def __repr__(self):
-        return f"ComickExtractor(url={self.url})"
+        return f"ComickScraper(url={self.url})"

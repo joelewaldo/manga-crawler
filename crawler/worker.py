@@ -8,7 +8,7 @@ from utils.download import Downloader
 from utils import get_logger
 
 from scraper import find
-from scraper.extractor import Extractor
+from scraper.scraper import Scraper
 
 class Worker(Thread):
     def __init__(self, worker_id, config: Config, frontier: Frontier, politeness: Politeness, downloader: Downloader):
@@ -34,12 +34,12 @@ class Worker(Thread):
             resp = self.downloader.request(tbd_url)
 
             self.logger.info(
-                f"Downloaded {tbd_url}, status <{resp.status_code}>,"
+                f"Downloaded {tbd_url}, status <{resp.status_code}>."
             )
 
-            extractor: Extractor = find(tbd_url)
+            scraper: Scraper = find(tbd_url, self.config)
 
-            scraped_urls = extractor.find_links(tbd_url, resp)
+            scraped_urls = scraper.find_links(tbd_url, resp)
             for scraped_url in scraped_urls:
                 self.frontier.add_url(scraped_url)
             self.frontier.mark_url_complete(tbd_url)

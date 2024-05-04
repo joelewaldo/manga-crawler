@@ -1,15 +1,20 @@
-from scraper.extractor import Extractor
+from scraper.scraper import Scraper
+from extractor import find
+from extractor.extractor import Extractor
 from urllib.parse import urlparse, urljoin
 from bs4 import BeautifulSoup
 import re
 
-class Tcb(Extractor):
+class Tcb(Scraper):
     domain = "tcb-backup.bihar-mirchi.com"
 
-    def __init__(self, url):
-        self.url = url
+    def __init__(self, url, config):
+        super().__init__(url, config)
     
     def extract_next_links(self, url, resp) -> list[str]:
+        extractor: Extractor = find(url, self.config)
+        extractor.extract(url, resp)
+
         soup = BeautifulSoup(resp.content, "html.parser", from_encoding="utf-8")
         links = []
 
@@ -52,4 +57,4 @@ class Tcb(Extractor):
             raise
 
     def __repr__(self):
-        return f"TcbExtractor(url={self.url})"
+        return f"TcbScraper(url={self.url})"
