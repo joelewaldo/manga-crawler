@@ -54,7 +54,7 @@ class Frontier(object):
         for hashed_url in self.urls:
             url = self.urls[hashed_url]["url"]
             completed = self.urls[hashed_url]["completed"]
-            scraper: Scraper = find(url)
+            scraper: Scraper = find(url, self.config)
             if not completed and scraper.is_valid(url):
                 self.to_be_downloaded.put(url)
                 tbd_count += 1
