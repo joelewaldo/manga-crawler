@@ -104,5 +104,5 @@ venv.bak/
 
 *.full.py
 *.shelve
-frontier.json
+*.json
 manga
