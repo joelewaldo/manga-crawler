@@ -2,7 +2,7 @@
 class Metadata:
   def __init__(self, data: dict[str, str]):
     self.manga = self._sanitize_filename(data["manga"].strip())
-    self.chapter = data["chapter"]
+    self.chapter = self._sanitize_filename(data["chapter"].strip())
     self.chapter_minor = int(data["chapter_minor"]) if data["chapter_minor"] else None
     self.lang = data["lang"]
     self.language = data["language"]

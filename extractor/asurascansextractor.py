@@ -30,6 +30,7 @@ class AsurascansExtractor(Extractor):
   
   def _get_images(self, url, resp) -> list[str]:
     soup = BeautifulSoup(resp.content, "html.parser", from_encoding="utf-8")
-    img_tags = soup.find_all('img', class_='ts-main-image')
+    div = soup.find('div', class_="rdminimal")
+    img_tags = div.find_all('img')
     img_sources = [img['src'] for img in img_tags if 'src' in img.attrs]
     return img_sources
