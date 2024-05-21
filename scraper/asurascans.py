@@ -1,7 +1,7 @@
 from scraper.scraper import Scraper
 from extractor import find
 from extractor.extractor import Extractor
-from urllib.parse import urlparse, urljoin
+from urllib.parse import urljoin, urlsplit, urlunsplit, urlparse
 from bs4 import BeautifulSoup
 import re
 
