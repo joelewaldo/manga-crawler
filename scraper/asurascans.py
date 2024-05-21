@@ -25,6 +25,8 @@ class Asurascans(Scraper):
             if href:
                 if self.is_relative(href):
                     href = urljoin(url, href)
+                parsed_url = urlsplit(href)
+                href = urlunsplit(parsed_url._replace(fragment=''))
                 links.append(href)
         return links
     

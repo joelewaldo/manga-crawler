@@ -1,8 +1,9 @@
 from scraper.scraper import Scraper
-from urllib.parse import urlparse, urljoin
+from extractor import find
+from extractor.extractor import Extractor
+from urllib.parse import urljoin, urlsplit, urlunsplit, urlparse
 from bs4 import BeautifulSoup
 import re
-
 class Comick(Scraper):
     domain = "comick.io"
 
@@ -10,6 +11,9 @@ class Comick(Scraper):
         super().__init__(url, config)
     
     def extract_next_links(self, url, resp) -> list[str]:
+        extractor: Extractor = find(url, self.config)
+        extractor.extract(url, resp)
+
         soup = BeautifulSoup(resp.content, "html.parser", from_encoding="utf-8")
         links = []
 
@@ -20,6 +24,8 @@ class Comick(Scraper):
             if href:
                 if self.is_relative(href):
                     href = urljoin(url, href)
+                parsed_url = urlsplit(href)
+                href = urlunsplit(parsed_url._replace(fragment=''))
                 links.append(href)
         return links
     
