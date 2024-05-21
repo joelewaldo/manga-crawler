@@ -1,4 +1,4 @@
-# 📖 Manga Crawler Project
+# 📖 Manga Crawler
 
 This is a manga scraper that scrapes various pages for manga content.
 
