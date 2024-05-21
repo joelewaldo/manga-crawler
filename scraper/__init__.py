@@ -10,7 +10,8 @@ if module_directory not in sys.path:
 module_domains = {
     "comick": "comick.io",
     "tcb": "tcb-backup.bihar-mirchi.com",
-    "asurascans": "asuracomic.net"
+    "asurascans": "asuracomic.net",
+    "ragnarokscans": "ragnarokscanlation.org"
 }
 
 def _list_classes():

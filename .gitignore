@@ -107,4 +107,5 @@ venv.bak/
 *.json
 *.db
 *.db-journal
+dump.txt
 manga

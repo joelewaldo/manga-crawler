@@ -155,7 +155,7 @@ if __name__ == "__main__":
     cparser = ConfigParser()
     cparser.read("config.ini")
     config = Config(cparser)
-    url = "https://asuracomic.net/1908287720-reaper-of-the-drifting-moon-chapter-86/"
+    url = "https://ragnarokscanlation.org/series/boruto-two-blue-vortex/chapter-10/"
     dl = Downloader(config)
     content = dl.request(url).content
     with open("dump.txt", "w") as fh:
