@@ -59,4 +59,4 @@ class Asurascans(Scraper):
             raise
 
     def __repr__(self):
-        return f"TcbScraper(url={self.url})"
+        return f"AsurascansScraper(url={self.url})"
