@@ -1,8 +1,8 @@
-## 📖 Manga Crawler Project
+# 📖 Manga Crawler Project
 
 This is a manga scraper that scrapes various pages for manga content.
 
-# 👨‍💻 Installation
+## 👨‍💻 Installation
 
 To install the dependencies for this project run the following two commands
 after ensuring pip is installed for the version of python you are using.
@@ -13,7 +13,7 @@ that the terminal is at the root folder of this project.
 python -m pip install -r packages/requirements.txt
 ```
 
-# 🛠 Running
+## 🛠 Running
 
 To execute the crawler run the launch.py command.
 
